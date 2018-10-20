@@ -3,6 +3,12 @@ from flask import request
  
 app = Flask(__name__)
  
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
+
+#docker run -d -p 5000:5000 sortapp
+
 @app.route('/sort', methods = ['POST'])
 def sort_post_json_handler():
     print (request.is_json)
@@ -43,4 +49,4 @@ def bubble(bad_list):
     return flat_list
 
 if __name__ == '__main__':
-    app.run()      
+    app.run(host='0.0.0.0')      
